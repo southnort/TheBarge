@@ -14,8 +14,8 @@ namespace Default
         {
             get
             {
-                if(!_instance)
-                    _instance= GameObject.FindObjectOfType<LevelManager>();
+                if (!_instance)
+                    _instance = GameObject.FindObjectOfType<LevelManager>();
 
                 return _instance;
             }
@@ -33,6 +33,8 @@ namespace Default
             CurrentCounterMissionMax = new ReactiveInt(missionCounter);
 
             CurrentCounterMission.OnChange += AutoSave;
+
+            CurrentCounterMission.Value = PlayerData.CurrentData.CurrentMissionCounter;
         }
 
         private void OnDestroy()
@@ -42,7 +44,7 @@ namespace Default
 
         private void AutoSave(int value)
         {
-
+            PlayerData.CurrentData.CurrentMissionCounter = value;
             PlayerData.CurrentData.SaveData();
 
         }
