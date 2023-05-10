@@ -14,18 +14,28 @@ namespace Default
 
         internal void ConnectBobyes(Rigidbody oneBody, Rigidbody twoBody)
         {
-            jointSettings = oneBody.gameObject.AddComponent<SpringJoint>();
-            jointSettings.connectedBody = twoBody;
+            var sprJoint = oneBody.gameObject.AddComponent<SpringJoint>();
+            sprJoint.connectedBody = twoBody;
 
             oneRb = oneBody;
             twoRb = twoBody;     
         
         }
 
+        private void Update()
+        {
+            if (oneRb == null || twoRb == null)
+            {
+                RemoveConnections();
+            }
+
+        }
+
         internal void RemoveConnections()
         {
             jointSettings.connectedBody = null;
 
+            Destroy(gameObject);
         }
 
 

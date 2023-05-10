@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 987308927}
   - component: {fileID: 987308929}
   - component: {fileID: 987308931}
+  - component: {fileID: 7500662734087440377}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -184,6 +185,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 4550681069753435672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cce9ef6876d023478601f81381ae6ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c1ce028104483f4f83e156907ea655b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnObjectClick:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectRightClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7500662734087440377}
+        m_TargetAssemblyTypeName: Default.ConnectionInitializer, Game
+        m_MethodName: Connect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7500662734087440377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4550681069753435672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34116e24b5c2d964ca24424587040c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 987308928}

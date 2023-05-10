@@ -10,6 +10,9 @@ namespace Default
         private const string horizontalConstant = "Horizontal";
         private const string verticalConstant = "Vertical";
 
+        private const string joyVerticalUp = "9th Axis";
+        private const string joyVerticalDown = "10th Axis";
+
         [SerializeField] PlayerShipView _playerShipView;
         private IInputController _inputController => _playerShipView;
 
@@ -40,6 +43,12 @@ namespace Default
             if (Input.GetKey(KeyCode.Space))
             {
                 _inputController.SetAction(InputActions.SpaceButton);
+            }
+
+            var joyVert = Input.GetAxis(joyVerticalUp) - Input.GetAxis(joyVerticalDown);
+            if (joyVert != 0)
+            {
+                _inputData.y = joyVert;
             }
         }
     }
