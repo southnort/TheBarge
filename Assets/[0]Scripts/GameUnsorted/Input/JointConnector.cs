@@ -30,8 +30,7 @@ namespace Default
             else
             {
                 _rb2 = rb;
-                var connector = Instantiate(ropePrefab, _rb1.transform);
-                connector.transform.localPosition = Vector3.zero;
+                var connector = Instantiate(ropePrefab);
                 connector.ConnectBobyes(_rb1, _rb2);
 
                 Drop();

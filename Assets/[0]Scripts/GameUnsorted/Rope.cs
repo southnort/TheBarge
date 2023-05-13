@@ -7,15 +7,15 @@ namespace Default
 {
     internal sealed class Rope : MonoBehaviour
     {
-        public int PointsCount;
-        public LineRenderer LineRend;
-        public float PointsDistance;
-        public float PointColliderRadius;
+        [SerializeField] private int PointsCount;
+        [SerializeField] private LineRenderer LineRend;
+        [SerializeField] private float PointsDistance;
+        [SerializeField] private float PointColliderRadius;
 
         List<Rigidbody> GeneratedPoints;
 
-        public Transform PointA;
-        public Transform PointB;
+        [HideInInspector] public Transform PointA;
+        [HideInInspector] public Transform PointB;
 
         // Start is called before the first frame update
         void Start()
@@ -29,7 +29,7 @@ namespace Default
             for (int i = 0; i < PointsCount; i++)
             {
                 GameObject ChainPoint = new GameObject();
-                ChainPoint.transform.SetParent(transform);
+                ChainPoint.transform.SetParent(transform.parent);
                 SphereCollider SC = ChainPoint.AddComponent<SphereCollider>();
                 SC.radius = PointColliderRadius;
                 Rigidbody RB = ChainPoint.AddComponent<Rigidbody>();
@@ -78,7 +78,7 @@ namespace Default
                 else if (i == GeneratedPoints.Count - 1)
                 {
                     GeneratedPoints[i].transform.position = PointB.position;
-                }               
+                }
             }
         }
     }

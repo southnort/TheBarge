@@ -1,30 +1,57 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System.Reflection;
 
 namespace Default
 {
     internal sealed class RopeController : MonoBehaviour
     {
-        [SerializeField] private Joint jointSettings;
-        [SerializeField] private Rigidbody oneRb;
-        [SerializeField] private Rigidbody twoRb;
+        [SerializeField] private Rope visualRope;
+
+        private Rigidbody _oneRb;
+        private Rigidbody _twoRb;
+        private Joint _joint;
 
 
         internal void ConnectBobyes(Rigidbody oneBody, Rigidbody twoBody)
         {
-            var sprJoint = oneBody.gameObject.AddComponent<SpringJoint>();
-            sprJoint.connectedBody = twoBody;
+            _joint = AddJointToRigidbody(oneBody, twoBody);           
 
-            oneRb = oneBody;
-            twoRb = twoBody;     
-        
+            _oneRb = oneBody;
+            _twoRb = twoBody;
+
+            visualRope.PointA = _oneRb.transform;
+            visualRope.PointB = _twoRb.transform;
+        }
+
+        private Joint AddJointToRigidbody(Rigidbody body, Rigidbody connectedBody)
+        {
+            var joint = body.gameObject.AddComponent<ConfigurableJoint>();
+            joint.connectedBody = connectedBody;
+
+            joint.anchor = new Vector3(0, 0, -1f);
+            joint.connectedAnchor = new Vector3(0, 0, -1f);
+            
+            joint.autoConfigureConnectedAnchor = false;
+
+            joint.xMotion = ConfigurableJointMotion.Limited;
+            joint.yMotion = ConfigurableJointMotion.Limited;
+            joint.zMotion = ConfigurableJointMotion.Limited;
+
+            var limit = joint.linearLimit;
+            limit.limit = 20;
+            joint.linearLimit = limit;
+
+            joint.enableCollision = true;
+
+            return joint;
         }
 
         private void Update()
         {
-            if (oneRb == null || twoRb == null)
+            if ((_oneRb == null || _twoRb == null) ||
+                (_oneRb.isKinematic || _twoRb.isKinematic))
             {
                 RemoveConnections();
             }
@@ -33,13 +60,9 @@ namespace Default
 
         internal void RemoveConnections()
         {
-            jointSettings.connectedBody = null;
-
+            _joint.connectedBody = null;
+            Destroy(_joint);
             Destroy(gameObject);
         }
-
-
-
-
     }
 }
