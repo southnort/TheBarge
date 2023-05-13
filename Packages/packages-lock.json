@@ -153,6 +153,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.yrr.yrrpackage": {
+      "version": "https://github.com/southnort/YrrPackage.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6b76d1248da5b52a47c305a9b533f5bd8bedc16b"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
