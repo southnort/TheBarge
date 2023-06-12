@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -24,9 +25,21 @@ namespace Game
             joint.linearLimit = limit;
         }
 
-        private void SetDisconnected()
+        internal void SetDisconnected()
         {
             magnet.Disconnect();
+            StartCoroutine(DisconnectCoroutine());
+        }
+
+        private IEnumerator DisconnectCoroutine()
+        {
+            float time = 1f;
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+                SetJointLimit(time * maxJointDistance);
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         internal void Shot(Vector3 aimPosition)

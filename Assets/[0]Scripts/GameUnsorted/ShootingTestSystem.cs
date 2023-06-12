@@ -37,6 +37,11 @@ namespace Yarigg
             }                
         }
 
+        public void ClickOnDisconnect()
+        {
+            moduleController.SetDisconnected();
+        }
+
 
 
         private void StartShooting()

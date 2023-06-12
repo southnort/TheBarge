@@ -1,6 +1,9 @@
+using System;
+
+
 namespace Game.Infrastructure.GameSystem
 {
-    public interface IGameListener { }  //don't use this interface!!!
+    public interface IGameListener { }  //This is marker interface. Use concrete listener!!!
 
     public interface IGameStartListener : IGameListener
     {

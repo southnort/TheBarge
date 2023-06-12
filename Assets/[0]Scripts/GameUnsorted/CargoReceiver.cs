@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using System.Linq;
+using Game;
 
 namespace Default
 {
@@ -19,6 +20,11 @@ namespace Default
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.TryGetComponent<HookMagnet>(out var magnet))
+            {
+                magnet.Disconnect();
+            }
+
             if (other.TryGetComponent<GatherableComponent>(out var comp))
             {
                 if (comp.IsGathering)
@@ -30,13 +36,13 @@ namespace Default
                     OnTriggerEnterAction?.Invoke();
                 }
 
-                animatedMover.Move(other.transform,()=>
+                animatedMover.Move(other.transform, () =>
                 {
                     LevelManager.Instance.CurrentCounterMission++;
                     Destroy(other.gameObject);
                     OnTrigerExit(other);
                 });
-            }            
+            }
         }
 
         private void OnTrigerExit(Collider other)

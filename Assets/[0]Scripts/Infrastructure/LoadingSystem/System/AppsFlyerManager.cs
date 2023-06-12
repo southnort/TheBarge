@@ -15,10 +15,10 @@ namespace Yarigg
                 Debug.Log("AppsFlyer Started");
                 onSuccess?.Invoke();
             }
-            else
-            {
-                onError?.Invoke("AppsFlyer init failed!");
-            }
+            //else
+            //{
+            //    onError?.Invoke("AppsFlyer init failed!");
+            //}
         }
     }
 }

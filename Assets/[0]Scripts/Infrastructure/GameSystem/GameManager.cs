@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Infrastructure.GameSystem
 {
@@ -36,6 +37,8 @@ namespace Game.Infrastructure.GameSystem
 
         public void PauseGame()
         {
+
+            Debug.Log("Pause");
             foreach (var listener in _listeners)
             {
                 if (listener == null) continue;
@@ -49,6 +52,7 @@ namespace Game.Infrastructure.GameSystem
 
         public void ResumeGame()
         {
+            Debug.Log("UnPause");
             foreach (var listener in _listeners)
             {
                 if (listener == null) continue;

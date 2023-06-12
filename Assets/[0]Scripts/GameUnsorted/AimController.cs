@@ -15,12 +15,12 @@ namespace Game
 
         private void Update()
         {
-            var mouse = Input.mousePosition;
-            Ray castPoint = _camera.ScreenPointToRay(mouse);
-            if (Physics.Raycast(castPoint, out var hit, Mathf.Infinity, raycastLayerMask))
-            {
-                transform.position = hit.point;
-            }
+            //var mouse = Input.mousePosition;
+            //Ray castPoint = _camera.ScreenPointToRay(mouse);
+            //if (Physics.Raycast(castPoint, out var hit, Mathf.Infinity, raycastLayerMask))
+            //{
+            //    transform.position = hit.point;
+            //}
         }
     }
 }

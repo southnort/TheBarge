@@ -1,8 +1,8 @@
+using Game.Infrastructure.GameSystem;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using Yarigg;
-using UnityEngine;
-using System.Collections.Generic;
+
 
 public class GameLifetimeScope : LifetimeScope
 {
@@ -10,12 +10,13 @@ public class GameLifetimeScope : LifetimeScope
 
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.Register<GameManager>(Lifetime.Singleton);
+
         foreach (var service in monobehServices)
         {
             var type = service.GetType();
             builder.Register(type, Lifetime.Singleton);
 
         }
-        builder.Register<TestScriptService>(Lifetime.Singleton);
     }
 }
