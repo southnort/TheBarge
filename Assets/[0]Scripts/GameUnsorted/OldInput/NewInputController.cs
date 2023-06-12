@@ -13,7 +13,7 @@ namespace Default
 
         [Space]
         [SerializeField] PlayerShipView _playerShipView;
-        private IInputController _inputController => _playerShipView;
+      //  private IInputController _inputController => _playerShipView;
 
         private Vector2 _inputData;
 
@@ -89,11 +89,11 @@ namespace Default
 
         private void Update()
         {
-            _inputController.SetInputData(_inputData);
+          //  _inputController.SetInputData(_inputData);
 
             if (_isBraking)
             {
-                _inputController.SetAction(InputActions.SpaceButton);
+           //     _inputController.SetAction(InputActions.SpaceButton);
             }
 
             HandleMouseClicks();

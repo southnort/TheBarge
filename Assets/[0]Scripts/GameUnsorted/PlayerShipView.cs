@@ -6,7 +6,7 @@ using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace Default
 {
-    internal sealed class PlayerShipView : MonoBehaviour, IInputController
+    internal sealed class PlayerShipView : MonoBehaviour
     {
         [SerializeField] private Transform moveRoot;
         [SerializeField] private ShipModel shipModel;
@@ -17,14 +17,19 @@ namespace Default
         [Header("Phycics")]
         [SerializeField] private Rigidbody physicBody;
 
+        [SerializeField] private Game.Input.InputController inputController;
 
 
 
 
+        private void Update()
+        {
+            SetInputData(inputController.MainInputAxes);
+        }
 
 
 
-        public void SetInputData(Vector2 horizontalVerticalInputData)
+        private void SetInputData(Vector2 horizontalVerticalInputData)
         {
             var hor = horizontalVerticalInputData.x;
             var vert = horizontalVerticalInputData.y;
@@ -35,14 +40,14 @@ namespace Default
         }
 
 
-        public void SetAction(InputActions action)
-        {
-            if (action == InputActions.SpaceButton)
-            {
-                BrakeRotating();
-                BrakeMoving();
-            }
-        }
+        //private void SetAction(InputActions action)
+        //{
+        //    if (action == InputActions.SpaceButton)
+        //    {
+        //        BrakeRotating();
+        //        BrakeMoving();
+        //    }
+        //}
 
 
         private void Move(float vert)

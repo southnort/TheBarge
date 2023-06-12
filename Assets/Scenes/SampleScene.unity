@@ -278,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &79214327
 Transform:
   m_ObjectHideFlags: 0
@@ -310,6 +310,7 @@ MonoBehaviour:
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 32
+  input: {fileID: 1657826161}
 --- !u!33 &79214330
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1099,7 +1100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360856063}
-  m_LocalRotation: {x: 0.46656424, y: -0.13791306, z: 0.07391451, w: 0.8705369}
+  m_LocalRotation: {x: 0.46656424, y: -0.13791306, z: 0.073914506, w: 0.87053686}
   m_LocalPosition: {x: 13.66, y: 43.2, z: -25.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1413,7 +1414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759356782}
-  m_LocalRotation: {x: 0.46656424, y: -0.13791306, z: 0.07391451, w: 0.8705369}
+  m_LocalRotation: {x: 0.46656424, y: -0.13791306, z: 0.073914506, w: 0.87053686}
   m_LocalPosition: {x: 12.19, y: 43.2, z: -82.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2935,8 +2936,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1657826157}
-  - component: {fileID: 1657826159}
   - component: {fileID: 1657826160}
+  - component: {fileID: 1657826161}
   m_Layer: 0
   m_Name: PlayerSystem
   m_TagString: Untagged
@@ -2962,37 +2963,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1657826159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657826156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddb004d336304547af473fb39c0b89d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onEmptyPlaceLeftClicked:
-    m_PersistentCalls:
-      m_Calls: []
-  onEmptyPlaceRightClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Default.JointConnector, Game
-        m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _playerShipView: {fileID: 1789236897}
 --- !u!114 &1657826160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3023,6 +2993,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1657826161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657826156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0887300c229724b4cbe0aceb62861332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 1657826160}
 --- !u!1 &1708867646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,6 +3126,7 @@ MonoBehaviour:
   moveRoot: {fileID: 1789236895}
   shipModel: {fileID: 11400000, guid: ce04e999e6f10344e9b873e483eb81e9, type: 2}
   physicBody: {fileID: 1789236898}
+  inputController: {fileID: 1657826161}
 --- !u!54 &1789236898
 Rigidbody:
   m_ObjectHideFlags: 0
